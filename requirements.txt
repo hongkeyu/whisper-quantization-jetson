@@ -1,0 +1,21 @@
+# Core inference + quantization
+faster-whisper==1.0.3
+ctranslate2==4.4.0
+transformers==4.44.2
+torch==2.4.1
+
+# Audio
+librosa==0.10.2
+soundfile==0.12.1
+
+# Datasets
+datasets==2.21.0
+
+# Evaluation
+jiwer==3.0.4
+
+# Utilities
+pyyaml==6.0.2
+pandas==2.2.2
+matplotlib==3.9.2
+tqdm==4.66.5

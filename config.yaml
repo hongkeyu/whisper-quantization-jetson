@@ -1,0 +1,35 @@
+# 全局配置 —— M1 和 Jetson 共用，跑哪个机器就改 device/compute_type
+
+model:
+  name: openai/whisper-small      # HuggingFace 模型 ID
+  cache_dir: ./models             # CT2 转换后的模型存这里
+
+# 评测的运行配置 (storage = 磁盘存权重的精度, compute_type = 运行时算的精度)
+# storage 决定 models/whisper-small-{storage}/ 的目录名 (转换产物可被多个 run 复用)
+runs:
+  - {name: fp32,      storage: float32, compute_type: float32}
+  - {name: fp16,      storage: float16, compute_type: float16}      # 仅 GPU
+  - {name: int8,      storage: int8,    compute_type: int8}
+  - {name: int8_fp16, storage: int8,    compute_type: int8_float16} # GPU 甜点档
+
+# 运行时设备配置
+runtime:
+  device: cpu                     # M1: cpu  |  Jetson/Colab: cuda
+  cpu_threads: 4                  # 仅 CPU 时生效
+  beam_size: 5                    # 解码 beam 宽度，影响速度与精度
+
+# 数据集配置
+dataset:
+  name: librispeech_test_clean    # 起步用 LibriSpeech test-clean 的小子集
+  num_samples: 50                 # 先 50 条跑通，后续可加大
+  cache_dir: ./data
+
+# 评测输出
+output:
+  results_dir: ./results
+
+# Benchmark (模块 5)
+benchmark:
+  num_samples: 20    # 取 manifest 前 N 条做 benchmark (而非全部 50)
+  n_warmup: 3        # 计时前先跑 N 条 warmup, 不计时
+  n_trials: 3        # 每条样本测 K 次, 取中位数

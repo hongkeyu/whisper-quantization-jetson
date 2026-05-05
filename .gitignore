@@ -1,0 +1,28 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.python-version
+
+# Project artifacts
+data/
+models/
+results/*.csv
+results/*.png
+!results/.gitkeep
+# Showcase a couple of result files
+!results/final-comparison.csv
+!results/comparison.png
+
+# IDE / local
+.vscode/
+.idea/
+.claude/
+
+# Jupyter
+.ipynb_checkpoints/
