@@ -24,5 +24,9 @@ results/*.png
 .idea/
 .claude/
 
+# Interview / summary notes (kept local)
+INTERVIEW.md
+experiments/*_summary.md
+
 # Jupyter
 .ipynb_checkpoints/

@@ -1,0 +1,26 @@
+=== activation tensor at model.encoder.layers.6.fc2 (input) ===
+model:        openai/whisper-small
+# audio:      50
+shape:        (75000, 3072)  (total_tokens, hidden_dim)
+total elems:  230,400,000
+
+--- value range ---
+min:          -0.169971
+max:          +74.730225
+mean:         -0.048684
+std:          0.553119
+|x|.max:      74.730225
+max/std:      135.1  (>10 表示长尾)
+
+--- |x| percentiles ---
+  p     50:  0.0612
+  p     75:  0.1182
+  p     90:  0.1591
+  p     95:  0.1680
+  p     99:  0.3371
+  p   99.5:  0.6878
+  p   99.9:  2.3730
+  p  99.95:  3.5837
+  p  99.99:  29.6077
+  p 99.999:  62.6882
+  p    100:  74.7302
