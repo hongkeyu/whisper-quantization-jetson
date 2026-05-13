@@ -26,6 +26,7 @@ results/*.png
 
 # Interview / summary notes (kept local)
 INTERVIEW.md
+SESSION_NOTES.md
 experiments/*_summary.md
 
 # Jupyter
